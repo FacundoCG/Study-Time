@@ -1,0 +1,39 @@
+{% extends 'base/main.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}Update date{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 class="text-center fw-bold mt-5 mb-2 display-1" style="color: #333533">Record time</h1>
+</div>
+
+
+<div class="container-fluid d-flex justify-content-center mt-5 ">
+    <div class="col-md-4 card" style="background-color: #CFDBD5;">
+        <form class="mt-2 p-3 rounded" method='POST'>
+            {% csrf_token %}
+             <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label fw-bold">Date:</label>
+                {% render_field form.date class="form-control" placeholder="YY-MM-DD" autocomplete="off" %}
+             </div>
+             <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label mt-3 fw-bold">Formal study hours:</label>
+                {% render_field form.formal_study_hours class="form-control" placeholder="DD-HH-MM" autocomplete="off" %}
+             </div>
+             <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label mt-3 fw-bold">Informal study hours:</label>
+                {% render_field form.informal_study_hours class="form-control" placeholder="DD-HH-MM" autocomplete="off" %}
+             </div>
+             <span class="d-flex justify-content-center mt-4">
+                <input class="btn btn-light btn-lg fw-bold mx-4" type="submit" value="Save"/>
+                <button type ="button" class="btn btn-dark btn-lg fw-bold" onclick="window.history.go(-1);">Back</button>
+            </span>       
+        </form>
+    </div>
+    
+</div>
+
+
+{% endblock %}

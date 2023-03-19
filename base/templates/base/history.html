@@ -1,0 +1,39 @@
+{% extends 'base/main.html' %}
+{% block title %}History{% endblock %}
+
+{% block content%}
+
+<div class="container-fluid">
+    <h1 class="text-center fw-bold mt-4 mb-5 display-1" style="color: #333533">History</h1>
+</div>
+
+<div class="row m-3 mb-5">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <table class="table table-light table-bordered border-dark">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Formal Study Hours</th>
+          <th scope="col">Informal Study Hours</th>
+          <th scope="col">Edit</th>
+          <!-- <th scope="col">Total</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        {% for study in study_list %}
+        <tr>
+          <td>{{study.date}}</td>
+          <td>{{study.formal_study_hours}}</td>
+          <td>{{study.informal_study_hours}}</td>
+          <td ><span class="d-flex justify-content-center"><a href="{% url 'update' study.id %}"><button class="btn btn-lg"><img src="../../static/img/pen.svg"></button></a></span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+
+{% endblock %}
