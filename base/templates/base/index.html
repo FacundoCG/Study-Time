@@ -1,13 +1,14 @@
 {% extends 'base/main.html' %}
-{% block title %}Timetable{% endblock %}
+{% block title %}Study Time{% endblock %}
 
 {% block content%}
 
 <div class="container-fluid">
-  <h1 class="text-center fw-bold mt-5 mb-3 display-1" style="color: #333533">Welcome!</h1>
+  <h1 class="text-center fw-bold mt-5 mb-3 display-1" style="color: #333533">Welcome, {{request.user}}!</h1>
   <h2 class="text-center fw-bold mb-4"  style="color: #333533">Last seven days:</h2>
 </div>
 
+{% if last_times %}
 <div class="row m-3 mb-5">
   <div class="col-md-2"></div>
   <div class="col-md-8">
@@ -22,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for study in guia %}
+        {% for study in last_times %}
         <tr>
           <td>{{study.date}}</td>
           <td>{{study.formal_study_hours}}</td>
@@ -36,7 +37,9 @@
   </div>
   <div class="col-md-2"></div>
 </div>
-
+{% else %}
+  <h3 class="fw-bold text-danger text-center">There are no records in your account.</h3>
+{% endif %}
 
 {% endblock %}
 

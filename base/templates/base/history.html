@@ -4,10 +4,40 @@
 {% block content%}
 
 <div class="container-fluid">
-    <h1 class="text-center fw-bold mt-4 mb-5 display-1" style="color: #333533">History</h1>
+    <h1 class="text-center fw-bold mt-4 mb-3 display-1" style="color: #333533">History</h1>
 </div>
 
+
+{% if study_list %}
 <div class="row m-3 mb-5">
+
+  <div class="container d-flex justify-content-center mb-3">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-dark fw-bold dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Months
+      </button>
+      <ul class="dropdown-menu">
+        {% for month in months %}
+        <li><a class="dropdown-item" href="?month={{ forloop.counter }}">{{ month }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-dark fw-bold dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Years
+      </button>
+      <ul class="dropdown-menu">
+        {% for year in years %}
+        <li><a class="dropdown-item" href="?year={{ year }}">{{ year }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+  </div>
+
+    
+
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <table class="table table-light table-bordered border-dark">
@@ -35,5 +65,8 @@
   <div class="col-md-2"></div>
 </div>
 
+{% else %}
+  <h3 class="fw-bold text-danger text-center">There are no records in your account.</h3>
+{% endif %}
 
 {% endblock %}

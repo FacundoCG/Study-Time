@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +24,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = 'django-insecure--+q3@sfmtng(1e*7&x4)fa8q%152tz2_$4(y0y#l70c$&6mf+!'
 
 # Application definition
 
@@ -124,3 +123,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'login' 
