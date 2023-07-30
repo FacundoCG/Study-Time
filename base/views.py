@@ -97,7 +97,7 @@ class HistoryList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        context["study_list"] = context["study_list"].filter(user=self.request.user)
         unique_months = Study.objects.filter(user=self.request.user).dates(
             "date", "month", order="ASC"
         )
